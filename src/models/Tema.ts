@@ -1,4 +1,4 @@
-import Postagem from "./Postagem";
+import Postagem from "../models/Postagem";
 
 export default interface Tema {
     id: number;
