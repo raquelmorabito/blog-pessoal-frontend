@@ -5,6 +5,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Tema from "../../../models/Tema";
 import CardTemas from "../cardtemas/CardTemas";
 import { buscar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaTemas() {
 
@@ -22,15 +23,18 @@ function ListaTemas() {
             })
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                handleLogout()
+                handleLogout();
+                ToastAlerta('Sessão expirada. Faça login novamente.', 'erro');
+            } else {
+                ToastAlerta('Erro ao carregar os temas.', 'erro');
             }
         }
     }
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!')
-            navigate('/')
+            ToastAlerta('Você precisa estar logado!', 'erro');
+            navigate('/');
         }
     }, [token])
 
