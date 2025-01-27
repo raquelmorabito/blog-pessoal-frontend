@@ -1,8 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+
 .fundoCadastro {
-    background-image: url("https://i.imgur.com/ZZFAmzo.jpg");
-    background-repeat: no-repeat;
-    width: 100%;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-  }
+  background-image: url("https://i.imgur.com/tiYV1Db.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh; 
+  width: 50%;
+  opacity: 0.3; 
+  transition: opacity 0.5s ease; 
+  position: absolute; 
+  top: 0;
+  right: 0; 
+  z-index: -1; 
+}
+
+.group:hover .fundoCadastro {
+  opacity: 1; 
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  box-sizing: border-box;
+}
+
+form {
+  background-color: white; 
+  padding: 2rem;
+  border-radius: 16px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  width: 90%;
+  max-width: 400px;
+  z-index: 10;
+}
+
+h2 {
+  color: #394867;
+  font-family: 'Playfair Display', serif;
+}
+
+label {
+  color: #E7BACB;
+}
+
+input {
+  border: 1px solid #E7BACB;
+  border-radius: 8px;
+  padding: 0.75rem;
+  width: 100%;
+}
+
+input:focus {
+  border-color: #C2185B;
+  outline: none;
+}
+
+button {
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+
+button.bg-red-400 {
+  background-color: #C2185B;
+}
+
+button.bg-red-400:hover {
+  background-color: #A3164B;
+}
+
+button.bg-indigo-400 {
+  background-color: #394867;
+}
+
+button.bg-indigo-400:hover {
+  background-color: #2F3B56;
+}

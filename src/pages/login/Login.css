@@ -1,8 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+
+.bg-cinza-claro {
+    background-color: #F7F7F7;
+}
+
 .fundoLogin {
-    background-image: url("https://i.imgur.com/ZZFAmzo.jpg");
+    background-image: url("https://i.imgur.com/tiYV1Db.jpeg");
     background-repeat: no-repeat;
     min-height: 100vh;
     width: 100%;
     background-size: cover;
     background-position: center;
+}
+
+.containerLogin {
+    background-color: white; /* Fundo branco puro para o formulário */
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+.text-azul-petroleo {
+    color: #394867;
+}
+
+.text-rosa-suave {
+    color: #E7BACB;
+    font-size: 0.9rem;
+}
+
+.text-cinza-escuro {
+    color: #1A1A1A;
+}
+
+.text-pink-profissional {
+    color: #C2185B;
+}
+
+.text-pink-profissional:hover {
+    color: #A3164B;
+    text-decoration: underline;
+}
+
+.inputLogin {
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 1px solid #E7BACB; /* Rosa Suave */
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inputLogin:focus {
+    border-color: #C2185B; /* Pink Profissional */
+    box-shadow: 0 0 4px rgba(194, 24, 91, 0.6);
+    outline: none;
+}
+
+
+.buttonLogin {
+    background-color: #C2185B; /* Pink Profissional */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttonLogin:hover {
+    background-color: #A3164B; /* Tom mais escuro de Pink Profissional */
+    transform: scale(1.05);
+}
+
+.buttonLogin:active {
+    transform: scale(0.95); /* Efeito de clique */
+}
+
+form hr {
+    border-color: #E7BACB; /* Rosa Suave */
+    width: 100%;
 }

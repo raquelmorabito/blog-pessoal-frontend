@@ -1,51 +1,70 @@
 import { ReactNode, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const { usuario, handleLogout } = useContext(AuthContext);
 
-    const navigate = useNavigate();
+  function logout() {
+    handleLogout();
+    ToastAlerta("O Usuário foi desconectado com sucesso!", "sucesso");
+    navigate("/");
+  }
 
-    const { usuario, handleLogout } = useContext(AuthContext)
+  let component: ReactNode;
 
-    function logout() {
+  if (usuario.token !== "") {
+    component = (
+      <div className="w-full bg-[#FFF9F9] shadow-lg py-6">
+        <div className="container mx-auto flex justify-between items-center px-8">
+          {/* Logo */}
+          <h1 className="text-3xl font-bold text-[#C2185B]">
+            <Link to="/home" className="hover:underline">
+              Blog Pessoal
+            </Link>
+          </h1>
 
-        handleLogout()
-        alert('O Usuário foi desconectado com sucesso!')
-        navigate('/')
-    }
-    
-    let component: ReactNode
+          {/* Links de Navegação */}
+          <nav className="flex items-center gap-4">
+            <Link
+              to="/postagens"
+              className="text-[#C2185B] font-bold px-4 py-2 rounded-lg hover:bg-[#C2185B] hover:text-white transition-all"
+            >
+              Postagens
+            </Link>
+            <Link
+              to="/temas"
+              className="text-[#C2185B] font-bold px-4 py-2 rounded-lg hover:bg-[#C2185B] hover:text-white transition-all"
+            >
+              Temas
+            </Link>
+            <Link
+              to="/cadastrartema"
+              className="text-[#C2185B] font-bold px-4 py-2 rounded-lg hover:bg-[#C2185B] hover:text-white transition-all"
+            >
+              Cadastrar Tema
+            </Link>
+            <Link
+              to="/perfil"
+              className="text-[#C2185B] font-bold px-4 py-2 rounded-lg hover:bg-[#C2185B] hover:text-white transition-all"
+            >
+              Perfil
+            </Link>
+            <button
+              onClick={logout}
+              className="text-[#C2185B] font-bold px-4 py-2 rounded-lg hover:bg-[#C2185B] hover:text-white transition-all"
+            >
+              Sair
+            </button>
+          </nav>
+        </div>
+      </div>
+    );
+  }
 
-    if (usuario.token !== "") {
-
-        component = (
-
-            <div className='w-full bg-indigo-900 text-white
-                flex justify-center py-4'>
-
-                <div className="container flex justify-between text-lg">
-                    <Link to='/home' className="text-2xl font-bold">Blog Pessoal</Link>
-
-                    <div className='flex gap-4'>
-                        <Link to='/postagens' className='hover:underline'>Postagens</Link>
-                        <Link to='/temas' className='hover:underline'>Temas</Link>
-                        <Link to='/cadastrartema' className='hover:underline'>Cadastrar tema</Link>
-                        <Link to='/perfil' className='hover:underline'>Perfil</Link>
-                        <Link to='' onClick={logout} className='hover:underline'>Sair</Link>
-                    </div>
-                </div>
-            </div>
-
-        )
-
-    }
-
-    return (
-        <>
-            { component }
-        </>
-    )
+  return <>{component}</>;
 }
 
-export default Navbar
+export default Navbar;
