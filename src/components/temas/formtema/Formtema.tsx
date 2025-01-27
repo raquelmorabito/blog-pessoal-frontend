@@ -93,40 +93,54 @@ function FormTema() {
     }
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto">
-            <h1 className="text-4xl text-center my-8">
-                {id === undefined ? 'Cadastrar Tema' : 'Editar Tema'}
-            </h1>
+        <div className="relative h-screen flex items-center justify-center group">
+         
+            <img
+                src="https://i.imgur.com/tiYV1Db.jpeg"
+                alt="Imagem de Fundo"
+                className="absolute inset-0 w-full h-full object-cover opacity-30 transition-opacity duration-500 group-hover:opacity-100"
+            />
 
-            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="descricao">Descrição do Tema</label>
-                    <input
-                        type="text"
-                        placeholder="Descreva aqui seu tema"
-                        name='descricao'
-                        className="border-2 border-slate-700 rounded p-2"
-                        value={tema.descricao}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
+            <div className="relative z-10 flex items-center justify-center w-full max-w-lg p-6 bg-white rounded-lg shadow-lg">
+                <div className="w-full">
+                    <h1 className="text-4xl font-bold text-[#394867] mb-6 text-center">
+                        {id === undefined ? 'Cadastrar Tema' : 'Editar Tema'}
+                    </h1>
+
+                    <form className="flex flex-col gap-6" onSubmit={gerarNovoTema}>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="descricao" className="text-[#C2185B]">
+                                Descrição do Tema
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Descreva aqui seu tema"
+                                name='descricao'
+                                className="border-2 border-slate-700 rounded p-2"
+                                value={tema.descricao}
+                                onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="py-2 w-full bg-[#C2185B] text-white font-bold rounded-lg hover:bg-[#E91E63] transition-transform transform hover:scale-105"
+                        >
+                            {isLoading ? (
+                                <RotatingLines
+                                    strokeColor="white"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="24"
+                                    visible={true}
+                                />
+                            ) : (
+                                <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+                            )}
+                        </button>
+                    </form>
                 </div>
-                <button
-                    className="rounded text-slate-100 bg-indigo-400 
-                               hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center"
-                    type="submit">
-                    {isLoading ?
-                        <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
-                        /> :
-                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
-
-                    }
-                </button>
-            </form>
+            </div>
         </div>
     );
 }

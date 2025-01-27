@@ -1,25 +1,20 @@
-﻿import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { cadastrarUsuario } from '../../services/Service';
-import { RotatingLines } from 'react-loader-spinner';
-import Usuario from '../../models/Usuario';
-import { ToastAlerta } from '../../utils/ToastAlerta';
-
-import './Cadastro.css';
+﻿import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { cadastrarUsuario } from "../../services/Service";
+import { RotatingLines } from "react-loader-spinner";
+import Usuario from "../../models/Usuario";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
   const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const [confirmaSenha, setConfirmaSenha] = useState<string>('');
-
+  const [confirmaSenha, setConfirmaSenha] = useState<string>("");
   const [usuario, setUsuario] = useState<Usuario>({
     id: 0,
-    nome: '',
-    usuario: '',
-    senha: '',
-    foto: '',
+    nome: "",
+    usuario: "",
+    senha: "",
+    foto: "",
   });
 
   useEffect(() => {
@@ -29,7 +24,7 @@ function Cadastro() {
   }, [usuario]);
 
   function retornar() {
-    navigate('/login');
+    navigate("/login");
   }
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -48,120 +43,138 @@ function Cadastro() {
 
     if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
       setIsLoading(true);
-
       try {
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-        ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso');
+        ToastAlerta("Usuário cadastrado com sucesso!", "sucesso");
       } catch (error) {
-        ToastAlerta('Erro ao cadastrar o usuário!', 'erro');
+        ToastAlerta("Erro ao cadastrar o usuário!", "erro");
       }
     } else {
       ToastAlerta(
-        'Dados estão inconsistentes. Verifique as informações do cadastro',
-        'erro'
+        "Dados estão inconsistentes. Verifique as informações do cadastro.",
+        "erro"
       );
-      setUsuario({ ...usuario, senha: '' });
-      setConfirmaSenha('');
+      setUsuario({ ...usuario, senha: "" });
+      setConfirmaSenha("");
     }
-
     setIsLoading(false);
   }
 
   return (
-    <>
-      <div
-        className="grid grid-cols-1 lg:grid-cols-2 h-screen 
-            place-items-center font-bold"
-      >
-        <div className="fundoCadastro hidden lg:block"></div>
+    <div className="relative h-screen group">
+      {/* Imagem de fundo */}
+      <img
+        src="https://i.imgur.com/tiYV1Db.jpeg"
+        alt="Imagem de Flor"
+        className="absolute inset-0 w-full h-full object-cover opacity-30 transition-opacity duration-500 group-hover:opacity-100"
+      />
+
+      {/* Conteúdo central */}
+      <div className="relative z-10 flex items-center justify-center h-full">
         <form
-          className="flex justify-center items-center flex-col w-2/3 gap-3"
+          className="bg-white rounded-lg shadow-lg p-8 w-[90%] max-w-md text-center"
           onSubmit={cadastrarNovoUsuario}
         >
-          <h2 className="text-slate-900 text-5xl">Cadastrar</h2>
-          <div className="flex flex-col w-full">
-            <label htmlFor="nome">Nome</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              placeholder="Nome"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.nome}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
+          <h2 className="text-4xl font-bold text-[#394867] mb-6">Cadastrar</h2>
+          <div className="flex flex-col w-full gap-4">
+            <div>
+              <label
+                htmlFor="nome"
+                className="block text-[#394867] font-semibold text-left mb-2"
+              >
+                Nome
+              </label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome completo aqui"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-[#C2185B] text-[#394867]"
+                value={usuario.nome}
+                onChange={atualizarEstado}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="usuario"
+                className="block text-[#394867] font-semibold text-left mb-2"
+              >
+                Usuário
+              </label>
+              <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                placeholder="Exemplo: usuario@usuario.com"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-[#C2185B] text-[#394867]"
+                value={usuario.usuario}
+                onChange={atualizarEstado}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="foto"
+                className="block text-[#394867] font-semibold text-left mb-2"
+              >
+                Foto
+              </label>
+              <input
+                type="text"
+                id="foto"
+                name="foto"
+                placeholder="Adicione o link para sua foto de perfil"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-[#C2185B] text-[#394867]"
+                value={usuario.foto}
+                onChange={atualizarEstado}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="senha"
+                className="block text-[#394867] font-semibold text-left mb-2"
+              >
+                Senha
+              </label>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Crie uma senha segura"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-[#C2185B] text-[#394867]"
+                value={usuario.senha}
+                onChange={atualizarEstado}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="confirmarSenha"
+                className="block text-[#394867] font-semibold text-left mb-2"
+              >
+                Confirmar Senha
+              </label>
+              <input
+                type="password"
+                id="confirmarSenha"
+                name="confirmarSenha"
+                placeholder="Confirme sua senha"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-[#C2185B] text-[#394867]"
+                value={confirmaSenha}
+                onChange={handleConfirmarSenha}
+              />
+            </div>
           </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="usuario">Usuario</label>
-            <input
-              type="text"
-              id="usuario"
-              name="usuario"
-              placeholder="Usuario"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.usuario}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="foto">Foto</label>
-            <input
-              type="text"
-              id="foto"
-              name="foto"
-              placeholder="Foto"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.foto}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="senha">Senha</label>
-            <input
-              type="password"
-              id="senha"
-              name="senha"
-              placeholder="Senha"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.senha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="confirmarSenha">Confirmar Senha</label>
-            <input
-              type="password"
-              id="confirmarSenha"
-              name="confirmarSenha"
-              placeholder="Confirmar Senha"
-              className="border-2 border-slate-700 rounded p-2"
-              value={confirmaSenha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                handleConfirmarSenha(e)
-              }
-            />
-          </div>
-          <div className="flex justify-around w-full gap-8">
+
+          <div className="flex justify-between gap-4 mt-6">
             <button
-              className="rounded text-white bg-red-400 
-                  hover:bg-red-700 w-1/2 py-2"
+              type="button"
+              className="w-1/2 bg-[#C2185B] text-white font-bold py-3 rounded-lg hover:bg-[#E91E63] transition-transform transform hover:scale-105"
               onClick={retornar}
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="rounded text-white bg-indigo-400 
-                           hover:bg-indigo-900 w-1/2 py-2
-                           flex justify-center"
+              className="w-1/2 bg-[#394867] text-white font-bold py-3 rounded-lg hover:bg-[#2F3B56] transition-transform transform hover:scale-105 flex justify-center items-center"
             >
               {isLoading ? (
                 <RotatingLines
@@ -178,7 +191,7 @@ function Cadastro() {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
