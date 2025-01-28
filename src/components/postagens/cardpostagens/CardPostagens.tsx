@@ -10,10 +10,9 @@ function CardPostagem({ postagem }: CardPostagensProps) {
   return (
     <div className="border border-gray-300 shadow-md rounded-lg overflow-hidden flex flex-col justify-between">
       <div>
-        {/* Cabeçalho com foto e nome do usuário */}
         <div className="flex w-full bg-[#FFF9F9] py-3 px-4 items-center gap-4">
           <img
-            src={postagem.usuario?.foto || "https://via.placeholder.com/150"}
+            src={postagem.usuario?.foto || ""}
             className="h-12 w-12 rounded-full border border-gray-300"
             alt={postagem.usuario?.nome || "Usuário"}
           />
