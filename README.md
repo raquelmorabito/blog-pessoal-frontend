@@ -1,85 +1,96 @@
 # Blog Pessoal - Frontend
 
-## Visão Geral
-Este projeto é um frontend para um blog pessoal desenvolvido em React com TypeScript, utilizando Vite como ferramenta de build. O design do projeto segue uma estrutura modular para organização de componentes e funcionalidades, garantindo manutenção e extensibilidade simplificada.
+Este é o Blog Pessoal, um projeto frontend desenvolvido para complementar o [backend](https://github.com/raquelmorabito/blog-pessoal-backend) utilizando React e TypeScript. Este projeto tem como objetivo fornecer uma interface de usuário completa para o gerenciamento de postagens e temas, além de autenticação de usuários.
 
-## Tecnologias Utilizadas
+## 🚀 Funcionalidades
 
-- **React**: Biblioteca para construção de interfaces de usuário.
-- **TypeScript**: Superset de JavaScript que adiciona tipagem estática.
-- **Vite**: Ferramenta de build rápida para aplicações frontend modernas.
-- **CSS**: Estilização para componentes visuais.
-- **Toastify**: Implementado no arquivo utilitário para notificações (via `ToastAlerta.ts`).
-- **Vercel**: Hospedagem do projeto para acesso e teste.
+- Cadastro e autenticação de usuários.
+- Criação, edição e exclusão de postagens.
+- Gerenciamento de temas associados às postagens.
+- Notificações amigáveis utilizando Toastify.
+- Integração completa com o backend para manipulação de dados.
 
-## Estrutura de Pastas
+## 🛠️ Tecnologias Utilizadas
 
-### **components**
-Contém componentes reutilizáveis organizados por funcionalidade:
-- **footer**: Componente para rodapé da aplicação.
-- **navbar**: Componente da barra de navegação.
-- **postagens**: Componentes relacionados à manipulação de postagens.
-- **temas**: Componentes para interação e exibição de temas.
+- **React**: Para construção de interfaces de usuário.
+- **TypeScript**: Para tipagem estática e melhor controle do código.
+- **Vite**: Ferramenta de build rápida e moderna.
+- **CSS**: Para estilização customizada de componentes.
+- **Toastify**: Para exibição de notificações.
+- **Vercel**: Hospedagem do projeto.
 
-### **contexts**
-- **AuthContext.tsx**: Contexto para autenticação de usuários.
-- **UserContext.tsx**: Contexto para dados específicos de usuários.
+## 📦 Configuração do Ambiente
 
-### **models**
-Define as interfaces utilizadas no projeto:
-- **Postagem.ts**
-- **Tema.ts**
-- **Usuario.ts**
-- **UsuarioLogin.ts**
+### Requisitos
+- Node.js instalado.
+- Gerenciador de pacotes (npm ou yarn).
 
-### **pages**
-Organiza as páginas principais:
-- **cadastro**: Formulário de cadastro de usuários.
-- **home**: Página inicial do blog.
-- **login**: Tela de autenticação.
-- **perfil**: Tela para exibição de informações do perfil do usuário.
+### Passos para Execução Local
 
-### **services**
-- **Service.ts**: Responsável por interação com a API backend.
-
-### **utils**
-- **ToastAlerta.ts**: Configuração e exibição de notificações.
-
-## Como Executar o Projeto Localmente
-
-### **Requisitos**
-- Node.js instalado
-- Gerenciador de pacotes (npm ou yarn)
-
-### **Passos**
 1. Clone o repositório:
    ```bash
-   git clone <https://github.com/raquelmorabito/blog-pessoal-frontend>
+   git clone https://github.com/raquelmorabito/blog-pessoal-frontend
    ```
 
-2. Instale as dependências:
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd blog-pessoal-frontend
+   ```
+
+3. Instale as dependências:
    ```bash
    npm install
    ```
 
-3. Inicie o servidor de desenvolvimento:
+4. Inicie o servidor de desenvolvimento:
    ```bash
    npm run dev
    ```
 
-4. Acesse o projeto no navegador em `http://localhost:5173`.
+5. Acesse o projeto no navegador:
+   [http://localhost:5173](http://localhost:5173)
 
-## Deploy
+## 🌐 Deploy
 
 O projeto está hospedado na Vercel e pode ser acessado através do link:
 
 [Blog Pessoal - Frontend](https://blog-pessoal-frontend-roan.vercel.app/)
 
-## Contribuição
+## 🔒 Autenticação
 
-1. Fork este repositório.
-2. Crie uma branch para sua feature ou correção: `git checkout -b minha-feature`.
-3. Realize as alterações e faça commit: `git commit -m "Minha nova feature"`.
-4. Envie para o repositório remoto: `git push origin minha-feature`.
-5. Abra um pull request.
+Este frontend utiliza autenticação via tokens JWT fornecidos pelo backend. Os usuários devem realizar login para acessar as funcionalidades protegidas do sistema.
 
+## 📈 Melhorias Futuras
+
+- Tornar o design mais responsivo para telas menores (mobile-first).
+- Adicionar animações para melhorar a experiência do usuário.
+- Explorar integração com outras APIs para funcionalidades adicionais.
+
+## 🤝 Contribuindo
+
+Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests. Para contribuir:
+
+1. Faça um fork do projeto.
+2. Crie uma nova branch:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Faça commit das suas alterações:
+   ```bash
+   git commit -m "Adiciona nova feature"
+   ```
+4. Envie para o repositório remoto:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um Pull Request.
+
+## 📬 Contato
+
+Se tiver dúvidas ou sugestões, entre em contato:
+
+- **Nome**: Raquel Morabito
+- **GitHub**: [raquelmorabito](https://github.com/raquelmorabito)
+- **LinkedIn**: [Raquel Morabito](https://www.linkedin.com/in/raquelmorabito)
+
+Desenvolvido por Raquel Morabito.
